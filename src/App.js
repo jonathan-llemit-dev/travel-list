@@ -1,3 +1,11 @@
-export default function App() {
-  return <h1>Hello React</h1>;
+export default function App() {}
+
+function Logo() {
+  return <h1>🏝️ Far Away 🧳</h1>;
 }
+
+function Form() {}
+
+function PackingList() {}
+
+function Stats() {}
