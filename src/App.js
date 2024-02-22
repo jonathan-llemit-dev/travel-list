@@ -11,7 +11,9 @@ export default function App() {
   // this is derived state where technically its just a normal variable but its value relies on other state
   const totalItems = items.length;
   const packedItems = items.filter((item) => item.packed === true).length;
-  const packedItemsPercentage = Math.round((packedItems / totalItems) * 100);
+  const packedItemsPercentage = totalItems
+    ? Math.round((packedItems / totalItems) * 100)
+    : 0;
 
   function handleAddItem(newItem) {
     setItems((items) => [...items, newItem]);
