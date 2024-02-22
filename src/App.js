@@ -8,6 +8,7 @@ const initialItems = [
 
 export default function App() {
   const [items, setItems] = useState([]);
+  const totalItems = items.length;
 
   function handleAddItem(newItem) {
     setItems((items) => [...items, newItem]);
@@ -34,7 +35,7 @@ export default function App() {
         onRemoveItem={handleRemoveItem}
         onToggleItem={handleToggleItem}
       />
-      <Stats />
+      <Stats totalItems={totalItems} />
     </div>
   );
 }
@@ -118,11 +119,12 @@ function Item({ item, onRemoveItem, onToggleItem }) {
   );
 }
 
-function Stats() {
+function Stats({ totalItems }) {
   return (
     <footer className="stats">
       <em>
-        💼 You have X items on your list, and you already packed X% of it. 😎
+        💼 You have {totalItems} items on your list, and you already packed X%
+        of it. 😎
       </em>
     </footer>
   );
