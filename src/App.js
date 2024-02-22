@@ -43,6 +43,7 @@ export default function App() {
       <Stats
         totalItems={totalItems}
         packedItemsPercentage={packedItemsPercentage}
+        packedItems={packedItems}
       />
     </div>
   );
@@ -127,12 +128,14 @@ function Item({ item, onRemoveItem, onToggleItem }) {
   );
 }
 
-function Stats({ totalItems, packedItemsPercentage }) {
+function Stats({ totalItems, packedItemsPercentage, packedItems }) {
   return (
     <footer className="stats">
       <em>
-        💼 You have {totalItems} items on your list, and you already packed{" "}
-        {packedItemsPercentage}% of it. 😎
+        💼 You have {totalItems} {totalItems > 1 ? "items" : "item"} on your
+        list, and you already packed {packedItems}{" "}
+        {packedItems > 1 ? "items" : "item"} ({packedItemsPercentage}%) of it.
+        😎
       </em>
     </footer>
   );
