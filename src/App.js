@@ -26,7 +26,10 @@ export default function App() {
   }
 
   function handleResetItem() {
-    setItems([]);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items?"
+    );
+    confirmed && setItems([]);
   }
 
   return (
