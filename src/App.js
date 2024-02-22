@@ -122,7 +122,7 @@ function Stats({ items }) {
   // this is derived state where technically its just a normal variable but its value relies on other state
   const totalItems = items.length;
 
-  if (!items.length) {
+  if (!totalItems) {
     return (
       <footer className="stats">
         <em>🚌 Start the adventure, list down all your needs! 📝</em>
