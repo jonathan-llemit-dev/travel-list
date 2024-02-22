@@ -8,12 +8,6 @@ const initialItems = [
 
 export default function App() {
   const [items, setItems] = useState([]);
-  // this is derived state where technically its just a normal variable but its value relies on other state
-  const totalItems = items.length;
-  const packedItems = items.filter((item) => item.packed).length;
-  const packedItemsPercentage = totalItems
-    ? Math.round((packedItems / totalItems) * 100)
-    : 0;
 
   function handleAddItem(newItem) {
     setItems((items) => [...items, newItem]);
@@ -40,11 +34,7 @@ export default function App() {
         onRemoveItem={handleRemoveItem}
         onToggleItem={handleToggleItem}
       />
-      <Stats
-        totalItems={totalItems}
-        packedItemsPercentage={packedItemsPercentage}
-        packedItems={packedItems}
-      />
+      <Stats items={items} />
     </div>
   );
 }
@@ -128,7 +118,23 @@ function Item({ item, onRemoveItem, onToggleItem }) {
   );
 }
 
-function Stats({ totalItems, packedItemsPercentage, packedItems }) {
+function Stats({ items }) {
+  // this is derived state where technically its just a normal variable but its value relies on other state
+  const totalItems = items.length;
+
+  if (!items.length) {
+    return (
+      <footer className="stats">
+        <em>🚌 Start the adventure, list down all your needs! 📝</em>
+      </footer>
+    );
+  }
+
+  const packedItems = items.filter((item) => item.packed).length;
+  const packedItemsPercentage = totalItems
+    ? Math.round((packedItems / totalItems) * 100)
+    : 0;
+
   return (
     <footer className="stats">
       <em>
