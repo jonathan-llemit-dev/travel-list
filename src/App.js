@@ -11,6 +11,7 @@ export default function App() {
   // this is derived state where technically its just a normal variable but its value relies on other state
   const totalItems = items.length;
   const packedItems = items.filter((item) => item.packed === true).length;
+  const packedItemsPercentage = (packedItems / totalItems) * 100;
 
   function handleAddItem(newItem) {
     setItems((items) => [...items, newItem]);
@@ -37,7 +38,10 @@ export default function App() {
         onRemoveItem={handleRemoveItem}
         onToggleItem={handleToggleItem}
       />
-      <Stats totalItems={totalItems} />
+      <Stats
+        totalItems={totalItems}
+        packedItemsPercentage={packedItemsPercentage}
+      />
     </div>
   );
 }
@@ -121,12 +125,12 @@ function Item({ item, onRemoveItem, onToggleItem }) {
   );
 }
 
-function Stats({ totalItems }) {
+function Stats({ totalItems, packedItemsPercentage }) {
   return (
     <footer className="stats">
       <em>
-        💼 You have {totalItems} items on your list, and you already packed X%
-        of it. 😎
+        💼 You have {totalItems} items on your list, and you already packed{" "}
+        {packedItemsPercentage}% of it. 😎
       </em>
     </footer>
   );
