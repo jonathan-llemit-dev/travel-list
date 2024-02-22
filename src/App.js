@@ -132,10 +132,15 @@ function Stats({ totalItems, packedItemsPercentage, packedItems }) {
   return (
     <footer className="stats">
       <em>
-        💼 You have {totalItems} {totalItems > 1 ? "items" : "item"} on your
-        list, and you already packed {packedItems}{" "}
-        {packedItems > 1 ? "items" : "item"} ({packedItemsPercentage}%) of it.
-        😎
+        {packedItemsPercentage === 100
+          ? "You got everything! Ready to go ✈"
+          : `💼 You have ${totalItems} ${
+              totalItems > 1 ? "items" : "item"
+            } on your
+        list, and you already packed ${packedItems} ${
+              packedItems > 1 ? "items" : "item"
+            } (${packedItemsPercentage}%) of it.
+        😎`}
       </em>
     </footer>
   );
