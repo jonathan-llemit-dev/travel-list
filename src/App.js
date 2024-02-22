@@ -8,6 +8,7 @@ const initialItems = [
 
 export default function App() {
   const [items, setItems] = useState([]);
+  // this is derived state where technically its just a normal variable but its value relies on other state
   const totalItems = items.length;
 
   function handleAddItem(newItem) {
