@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Logo from "./Logo";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -47,10 +48,6 @@ export default function App() {
   );
 }
 
-function Logo() {
-  return <h1>🏝️ Far Away 🧳</h1>;
-}
-
 function Form({ onAddItem }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -97,6 +94,7 @@ function PackingList({ items, onRemoveItem, onToggleItem, onResetItem }) {
   let sortedItems;
 
   if (sortBy === "input") sortedItems = items;
+
   if (sortBy === "description")
     sortedItems = items
       .slice()
