@@ -50,24 +50,6 @@ export default function App() {
   );
 }
 
-export function Item({ item, onRemoveItem, onToggleItem }) {
-  return (
-    <li>
-      <input
-        type="checkbox"
-        checked={item.packed}
-        onChange={() => {
-          onToggleItem(item.id);
-        }}
-      />
-      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
-        {item.quantity} {item.description}
-      </span>
-      <button onClick={() => onRemoveItem(item.id)}>❌</button>
-    </li>
-  );
-}
-
 function Stats({ items }) {
   // this is derived state where technically its just a normal variable but its value relies on other state
   const totalItems = items.length;
